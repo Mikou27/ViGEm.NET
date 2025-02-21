@@ -80,14 +80,11 @@ internal partial class Xbox360Controller : ViGEmTarget, IXbox360Controller
     public override void Connect()
     {
         base.Connect();
-
         //
         // Callback to event
         // 
         _notificationCallback = (client, target, largeMotor, smallMotor, number, userData) =>
         {
-            UserIndex = number;
-
             FeedbackReceived?.Invoke(this,
                 new Xbox360FeedbackReceivedEventArgs(largeMotor, smallMotor, number));
         };
@@ -163,14 +160,10 @@ internal partial class Xbox360Controller : ViGEmTarget, IXbox360Controller
     {
         get
         {
-            if (_userIndex == -1)
-            {
-                throw new Xbox360UserIndexNotReportedException();
-            }
-
             return _userIndex;
         }
-        private set => _userIndex = value;
+
+        set => _userIndex = value;
     }
 
     /// <summary>

@@ -14,7 +14,7 @@ public interface IXbox360Controller : IVirtualGamepad
 	/// <summary>
 	///     Gets the assigned player index set by the XInput sub-system.
 	/// </summary>
-	int UserIndex { get; }
+	int UserIndex { get; set; }
 
 	ref byte LeftTrigger { get; }
 
